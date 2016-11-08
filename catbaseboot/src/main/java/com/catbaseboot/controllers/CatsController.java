@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.catbaseboot.dao.CatDAO;
 import com.catbaseboot.dto.FormDTO;
 import com.catbaseboot.model.Cat;
 import com.catbaseboot.services.CatService;
@@ -25,16 +24,10 @@ import com.catbaseboot.services.CatService;
 public class CatsController {
 	
 	@Autowired
-	private CatDAO catDao;
-	
-	@Autowired
 	private CatService catService;
 	
 	@RequestMapping("")
 	public String start (Model model) throws ParseException {
-		
-		if (catDao.getCats().size() > 2)
-			model.addAttribute("name", catDao.getCats().get(2).getName());
 		
 		return "index";
 	}
@@ -52,32 +45,10 @@ public class CatsController {
 		if (bindingResult.hasErrors()) {
 			return "/cats/add";
 		} else {
-			catService.addCat(formDto);
 			catService.saveCat(formDto);
 			return "redirect:/";
 		}
 	}
-	
-	/*@RequestMapping("/cats/add")
-	public String addCats(HttpServletRequest request,  @ModelAttribute("formDto") @Valid FormDTO formDto, BindingResult result) {
-		if (request.getMethod().equalsIgnoreCase("post") && !result.hasErrors()) {
-
-			Cat cat = new Cat();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-			try {
-				cat.setBirthDate(sdf.parse(formDto.getBirthDate()));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			cat.setName(formDto.getName());
-			cat.setGuardianName(formDto.getGuardianName());
-			cat.setWeight(formDto.getWeight());
-			
-			catDao.addCat(cat);
-			return "redirect:/start";
-		}
-		return "/cats/add";
-	}*/
 	
 	@RequestMapping("/cats/show")
 	public String showCats (HttpServletRequest request, Model model) throws ParseException {
@@ -93,7 +64,6 @@ public class CatsController {
 		if (catGName == null) catGName = "catGName";
 
 		if (catService.getAllCats().size() <2) catService.initCats();
-		/*if (catDao.getCats().size() <2) catService.initCats();*/
 		String empty = "Catbase is empty";
 		List<Cat> catList = null;
 		
@@ -115,7 +85,7 @@ public class CatsController {
 	@RequestMapping("/cats/show/{id}")
     public String catDetails(@PathVariable("id") Integer id, Model model) {
         
-		Cat cat = catDao.getCats().get(id);
+		Cat cat = catService.getCatById(id+1);
 		
 		model.addAttribute("catName", cat.getName());
 		model.addAttribute("catWeight", cat.getWeight());
