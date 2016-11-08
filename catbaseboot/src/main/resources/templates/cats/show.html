@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    	<link rel="stylesheet" href="/css/style.css" />
+        <title>Show Cats</title>
+    </head>
+    <body>
+        <h4>Show Cats</h4>
+	    <p>If u wont see details cat, click his name</p>
+		<table>
+			<tbody>
+				<tr>
+					<th>#</th>
+					<th>Cats name</th>
+				</tr>
+				<tr th:each="cat,loop : ${cats}">
+					<td th:text="${loop.index}"></td>
+					<td><a href="#" th:href="@{/cats/show/}+${loop.index}" th:text="${cat.name}"></a></td>
+				</tr>
+				<!-- <c:forEach items="${cats}" var="cat" varStatus="loop">
+					<tr>
+						<td>${loop.index}</td>
+						<td><a href="/catsbasesec/cats/show/${loop.index}"><c:out value="${cat.name}" /></a></td>
+					</tr>
+				</c:forEach> -->
+			</tbody>
+		</table>
+
+		<a href="/" class="cancel"><input type="button" value="Back!"></input></a>
+		<div th:if="${catName != ''}">
+			<div class="details">
+				<h4>Details:</h4>
+				<p>Name: <span th:text="${catName}"></span></p>
+				<p>Weight: <span th:text="${catWeight}"></span></p>
+				<p>Born date: <span th:text="${catBDate}"></span></p> <!-- format -->
+				<p>Guardian name: <span th:text="${catGName}"></span></p>
+			</div>
+		</div>
+	</body>
+</html>

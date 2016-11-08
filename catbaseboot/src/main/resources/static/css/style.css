@@ -1,0 +1,80 @@
+body {
+    line-height: 1;
+}
+
+b {
+    font-weight: bold;
+}
+
+i {
+    font-style: italic;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+.clear {
+    clear: both;
+}
+
+/* LAYOUT GLOBAL */
+body {
+    font-family: 'Didact Gothic', sans-serif;
+
+    color: #404040;
+    background: #c0c0c0;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 300px;
+	border="1";
+}
+
+p {
+	color: darkblue
+}
+
+.details {
+	background-color: #bbbbbb;
+	width: 300px;
+}
+
+.details p {
+	margin: 0;
+}
+
+.details p span {
+	color: black;
+}
+		
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+	width: 150px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

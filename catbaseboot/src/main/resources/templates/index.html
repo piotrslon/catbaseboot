@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<link rel="stylesheet" href="css/style.css" />
+    <script src="js/cats.js"></script>
+    <title>Catsbase</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="content">
+        	<p>Catsbase</p>
+	        <ul>
+			  <li><a href="cats/add" class="cancel">Add Cat</a></li>
+			  <li><a href="cats/show" class="cancel">Show Cats</a></li>
+			</ul>
+	        <strong>${name}</strong>
+        </div>
+    </div>
+</body>
+<th:block layout:fragment="scripts">
+	<script src="/js/hello.js"></script>
+</th:block>
+</html>

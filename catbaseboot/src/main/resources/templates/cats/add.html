@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+		<link rel="stylesheet" href="/css/style.css" />
+        <title>Add Cat</title>
+    </head>
+    <body>
+        <p>AddCats</p>
+        <p>Request Method -${pageContext.request.method}-</p>
+		
+		<div id="form">
+			<form th:action="@{/cats/add}" th:object="${formDto}" method="post">
+				<table>
+					<tbody>
+						<tr>
+							<th>Questions</th>
+							<th>Answer</th>
+						</tr>
+						<tr>
+							<td>name:</td>
+							<td>
+								<input type="text" class="form-control" th:field="*{name}" /> 
+								<span class="help-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+							</td>
+						</tr>
+						<tr>
+							<td>Born date:</td>
+							<td>
+								<input type="text" class="form-control" th:field="*{birthDate}" /> 
+								<span class="help-block" th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+							</td>
+						</tr>	
+						<tr>
+							<td>Weight:</td>
+							<td>
+								<input type="text" class="form-control" th:field="*{weight}" /> 
+								<span class="help-block" th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></span>
+							</td>
+						</tr>
+						<tr>
+							<td>Guardian name:</td>
+							<td>
+								<input type="text" class="form-control" th:field="*{guardianName}" /> 
+								<span class="help-block" th:if="${#fields.hasErrors('guardianName')}" th:errors="*{guardianName}"></span>
+							</td>
+						</tr>
+						<tr>	
+							<td colspan="2" style="text-align: center;padding: 5px"><input type="submit" value="Send form" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+		
+		<a href="/" class="cancel"><input type="button" value="Back!"></input></a>
+	</body>
+</html>
+	<!-- <form:form method="POST" modelAttribute="formDto">
+			<table>
+				<tr>
+					<th>Qewstions</th>
+					<th>Answer</th>
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><form:input type="text" path="name"></form:input>
+						<form:errors path="name" cssClass="error" /></td>
+					<td><form:input type="text" path="name" />
+						<c:if test="${pageContext.request.method=='POST'}">
+						<form:errors path="name" cssClass="error" /></c:if></td>
+				</tr>
+				<tr>
+					<td>Born date:</td>
+					<td><form:input type="text" path="birthDate"></form:input>
+						<form:errors path="birthDate" cssClass="error" /></td>
+				<tr>
+					<td>Weight:</td>
+					<td><form:input type="text" path="weight"></form:input>
+						<form:errors path="weight" cssClass="error" /></td>
+				</tr>
+				<tr>
+					<td>Guardian name:</td>
+					<td><form:input type="text" path="guardianName"></form:input>
+						<form:errors path="guardianName" cssClass="error" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;padding: 5px"><input type="submit" value="Send form" /></td>
+				</tr>
+			</table>
+		</form:form> -->
