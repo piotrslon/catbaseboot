@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
-	console.log("cats.js");
-
+	setTimeout(function() {
+		$( ".alert" ).remove();
+	}, 3000);
 });

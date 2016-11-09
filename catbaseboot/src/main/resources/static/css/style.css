@@ -38,6 +38,7 @@ body {
 
     color: #404040;
     background: #c0c0c0;
+    background-color: #c0c0c0 !important;
 }
 
 a {
@@ -50,6 +51,16 @@ table {
 	border-collapse: collapse;
 	width: 300px;
 	border="1";
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+	width: 150px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 p {
@@ -68,13 +79,8 @@ p {
 .details p span {
 	color: black;
 }
-		
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-	width: 150px;
-}
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+.footer {
+	width: 50%;
+	display: table;
 }

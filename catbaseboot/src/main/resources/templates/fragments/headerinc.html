@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:fragment="head">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+    <script th:utext="${'var contextPath =' + contextPath + ';'}"></script>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.1.1/jquery.min.js"
+			th:src="@{/js/jquery-3.1.1.min.js}"></script>
+	<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"
+			th:src="@{/js/bootstrap.js}"></script>
+	<script th:src="@{/js/cats.js}" type="text/javascript"></script>
+    
+    <link rel="stylesheet" th:href="@{/css/style.css}"  media="screen" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+		  rel="stylesheet" th:href="@{/css/bootstrap.min.css}" media="screen" />
+    
+</head>
+	<body>
+	</body>
+</html>
