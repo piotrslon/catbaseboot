@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.catbaseboot")
-public class MyConfiguration extends WebMvcConfigurerAdapter {
+public class MyWebConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
