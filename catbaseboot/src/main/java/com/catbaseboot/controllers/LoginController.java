@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 	
-	@RequestMapping("/loggin")
+	@RequestMapping("/login")
 	public String start (Model model) throws ParseException {
 		
-		return "";
+		return "login";
 	}
 }
