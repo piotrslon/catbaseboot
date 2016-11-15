@@ -7,7 +7,6 @@
     <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 </head>
 <body>
-
     <div class="container">
         <div class="content">
         	<p>Catsbase</p>
@@ -16,6 +15,7 @@
 			  <li><a href="cats/show" class="cancel">Show Cats</a></li>
 			</ul>
         </div>
+        <p>Logged in as <span sec:authentication="name" /> with authorities: <span sec:authentication="authorities" /></p>
         <div th:if="${message} != null">
         	<span th:replace="fragments/alert :: alert (type='success', message=${message})">...</span>
         </div>
