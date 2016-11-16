@@ -24,6 +24,7 @@ public class MySecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
+        		.antMatchers("/webjars/**")
                 .antMatchers("/js/**")
                 .antMatchers("/css/**");
 
@@ -42,6 +43,6 @@ public class MySecurityConfiguration extends WebSecurityConfigurerAdapter {
             	.loginPage("/login")
                 .defaultSuccessUrl("/")
             .and()
-                .logout().logoutUrl("/logout");
+                .logout().logoutUrl("/index");
     }
 }
