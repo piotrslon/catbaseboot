@@ -28,7 +28,7 @@ public class CatsController {
 	private CatService catService;
 	
 	@RequestMapping("")
-	public String start (Model model) throws ParseException {
+	public String start (Model model) {
 		
 		return "index";
 	}

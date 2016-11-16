@@ -15,7 +15,7 @@
 			  <li><a href="cats/show" class="cancel">Show Cats</a></li>
 			</ul>
         </div>
-        <p>Logged in as <span sec:authentication="name" /> with authorities: <span sec:authentication="authorities" /></p>
+        <p>Logged in as <strong sec:authentication="name"></strong> with authorities: <span sec:authentication="authorities" /></p>
         <div th:if="${message} != null">
         	<span th:replace="fragments/alert :: alert (type='success', message=${message})">...</span>
         </div>
