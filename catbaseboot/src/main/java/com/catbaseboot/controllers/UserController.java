@@ -39,28 +39,9 @@ public class UserController {
 		} else {
 			userService.saveUser(registerFormDto);
 			redirectAttributes.addFlashAttribute("message", "Done, user is created!");
-			return "/login";
-			/*return "redirect:/";*/
+			return "redirect:/login";
 		}
 	}
-	/*@RequestMapping(value="/cats/add", method = RequestMethod.GET)
-	public String addCats (@ModelAttribute("formDto") FormDTO formDto) {
-		
-		return "/cats/add";
-	}
-	
-	@RequestMapping(value="/cats/add", method = RequestMethod.POST)
-	public String handleAddCatForm (HttpServletRequest request, @ModelAttribute("user") @Valid User user, 
-									BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-		
-		if (bindingResult.hasErrors()) {
-			return "/cats/add";
-		} else {
-			catService.saveCat(formDto);
-			redirectAttributes.addFlashAttribute("message", "Done, cats added to collection!");
-			return "redirect:/";
-		}
-	}*/
 	
 	//edit/delete?
 }
