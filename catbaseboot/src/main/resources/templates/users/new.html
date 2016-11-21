@@ -8,7 +8,43 @@
 </head>
 <body>
     <div class="container">
-    
+    	<form class="form-signin new-user" th:action="@{/users/new}" th:object="${user}" method="post">
+    		<h2 class="form-signin-heading">Register</h2>
+    		<div>
+    			<label for="inputUsername" class="sr-only">Username</label>
+    			<input type="text" name="username" id="inputUsername" class="form-control" th:field="*{username}"
+    			placeholder="Name" required="required" autofocus="autofocus"></input> 
+				<span class="help-block" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+				
+    			<label for="inputEmail" class="sr-only">Email address</label>
+    			<input type="email" name="email" id="inputEmail" class="form-control" th:field="*{email}"
+    			placeholder="Email address" required="required"></input> 
+				<span class="help-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+				
+    			<label for="inputPassword" class="sr-only">Password</label> 
+				<input type="password" name="password" id="inputPassword" class="form-control" th:field="*{password}"
+				placeholder="Password" required=""></input>
+				<span class="help-block" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+				
+				<!-- confirm password? -->
+				<div class="checkbox">
+					<label class="col-sm-4 col-md-4"><input type="checkbox" value="agree">I agree</input></label>
+					<!-- <div th:class="col-sm-8 col-md-8">
+					jakos to trzeba zmienic, ale "not this time"
+					http://stackoverflow.com/questions/29826576/thymeleaf-how-to-add-checked-attribute-to-input-conditionally
+					 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+					</div> -->
+				</div>
+				
+    		</div>
+    		<button class="btn btn-lg btn-success btn-block" type="submit" value="Register">Register</button>
+    	</form>
+    	
+    	<!-- formulasz zgodny ze stylem logowania 
+    		ale na tabeli i z walidaja z modelu -->
+    	<div class="col-md-offset-4">
+    	<!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+    	</div>
 	</div>
 </body>
 </html>

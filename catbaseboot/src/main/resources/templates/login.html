@@ -23,34 +23,18 @@
 				<label><input type="checkbox" value="remember-me">Remember me</input></label>
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit" value="Sign In">Sign in</button>
+			<div class="row">
+	            <button id="login_lost_btn" type="button" class="btn btn-link col-md-6">Lost Password?</button>
+	            <a href="/users/new" class="btn btn-link col-md-6" role="button">Register</a>
+	        </div>
 		</form>
+		
+		<div th:if="${message} != null">
+        	<span th:replace="fragments/alert :: alert (type='success', message=${message})">...</span>
+        </div>
 
-		<!-- walidacja jak w przy dodadwaniu kotow w modelu
-		czy wystarczy html? 
-		tworzyc formularz uzzytkownika? 
-		encrypt pass with
+		<!-- encrypt pass with
 		https://github.com/ulisesbocchio/jasypt-spring-boot-->
 	</div>
 </body>
 </html>
-
-			<!-- <form th:action="@{/cats/add}" th:object="${formDto}" method="post">
-					<table>
-						<tbody>
-							<tr>
-								<th>Questions</th>
-								<th>Answer</th>
-							</tr>
-							<tr>
-								<td>name:</td>
-								<td>
-									<input type="text" class="form-control" th:field="*{name}" /> 
-									<span class="help-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-								</td>
-							</tr>
-							<tr>	
-								<td colspan="2" style="text-align: center;padding: 5px"><input type="submit" value="Send form" /></td>
-							</tr>
-						</tbody>
-					</table>
-				</form> -->
