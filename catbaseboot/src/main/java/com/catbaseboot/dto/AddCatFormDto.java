@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class FormDTO {
+public class AddCatFormDto {
 
     @NotEmpty
     @Size(min=3, max=12)

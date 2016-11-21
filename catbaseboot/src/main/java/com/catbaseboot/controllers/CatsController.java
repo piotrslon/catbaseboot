@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.catbaseboot.dto.FormDTO;
+import com.catbaseboot.dto.AddCatFormDto;
 import com.catbaseboot.model.Cat;
 import com.catbaseboot.services.CatService;
 
@@ -35,13 +35,13 @@ public class CatsController {
 	
 	
 	@RequestMapping(value="/cats/add", method = RequestMethod.GET)
-	public String addCats (@ModelAttribute("formDto") FormDTO formDto) {
+	public String addCats (@ModelAttribute("formDto") AddCatFormDto formDto) {
 		
 		return "/cats/add";
 	}
 	
 	@RequestMapping(value="/cats/add", method = RequestMethod.POST)
-	public String handleAddCatForm (HttpServletRequest request, @ModelAttribute("formDto") @Valid FormDTO formDto, 
+	public String handleAddCatForm (HttpServletRequest request, @ModelAttribute("formDto") @Valid AddCatFormDto formDto, 
 									BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		
 		if (bindingResult.hasErrors()) {

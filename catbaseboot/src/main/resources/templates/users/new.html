@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-    	<form class="form-signin new-user" th:action="@{/users/new}" th:object="${user}" method="post">
+    	<form class="form-signin new-user" th:action="@{/users/new}" th:object="${registerFormDto}" method="post">
     		<h2 class="form-signin-heading">Register</h2>
     		<div>
     			<label for="inputUsername" class="sr-only">Username</label>

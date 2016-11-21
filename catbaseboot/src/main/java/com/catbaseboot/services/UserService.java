@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.catbaseboot.dto.RegisterFormDto;
 import com.catbaseboot.model.User;
 import com.catbaseboot.repositories.UserRepository;
 
@@ -22,7 +23,13 @@ public class UserService {
         return userRepository.save(user);
     } wlasnie dlatego dto, jest osobno od modelu*/
 	
-	public User saveUser(User user) throws IOException {
+	public User saveUser(RegisterFormDto registerFormDto) throws IOException {
+		
+		User user = new User();
+		user.setUsername(registerFormDto.getUsername());
+		user.setPassword(registerFormDto.getPassword());
+		user.setEmail(registerFormDto.getEmail());
+		
 		String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
 		user.setPassword(encodedPassword);
 		return userRepository.save(user);

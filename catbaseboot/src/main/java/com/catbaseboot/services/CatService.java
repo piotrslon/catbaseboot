@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.catbaseboot.dto.FormDTO;
+import com.catbaseboot.dto.AddCatFormDto;
 import com.catbaseboot.model.Cat;
 import com.catbaseboot.repositories.CatRepository;
 
@@ -33,7 +33,7 @@ public class CatService {
     return cartRepository.save(dbCart);
 	}*/
 	
-	public Cat saveCat(FormDTO formDto) {
+	public Cat saveCat(AddCatFormDto formDto) {
 		
 		Cat dbCat = new Cat();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");

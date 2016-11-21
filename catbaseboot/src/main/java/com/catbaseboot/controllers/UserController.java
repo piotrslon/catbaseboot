@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.catbaseboot.model.User;
+import com.catbaseboot.dto.RegisterFormDto;
 import com.catbaseboot.services.UserService;
 
 @Controller
@@ -25,21 +25,22 @@ public class UserController {
 	UserService userService;
 	
 	@RequestMapping(value="/users/new", method = RequestMethod.GET)
-	public String addUsersPage (@ModelAttribute("user") User user) {
+	public String addUsersPage (@ModelAttribute("registerFormDto") RegisterFormDto registerFormDto) {
 		
 		return "/users/new";
 	}
 	
 	@RequestMapping(value="/users/new", method = RequestMethod.POST)
-	public String addUsersPageForm (HttpServletRequest request, @ModelAttribute("user") @Valid User user, 
+	public String addUsersPageForm (HttpServletRequest request, @ModelAttribute("registerFormDto") @Valid RegisterFormDto registerFormDto, 
 			BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 		
 		if (bindingResult.hasErrors()) {
 			return "/users/new";
 		} else {
-			userService.saveUser(user);
+			userService.saveUser(registerFormDto);
 			redirectAttributes.addFlashAttribute("message", "Done, user is created!");
 			return "/login";
+			/*return "redirect:/";*/
 		}
 	}
 	/*@RequestMapping(value="/cats/add", method = RequestMethod.GET)
