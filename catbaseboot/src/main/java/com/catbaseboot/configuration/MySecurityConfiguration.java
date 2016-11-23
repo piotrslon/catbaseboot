@@ -77,6 +77,10 @@ public class MySecurityConfiguration extends WebSecurityConfigurerAdapter {
             	.failureUrl("/login?error")
                 .defaultSuccessUrl("/")
             .and()
-                .logout().logoutUrl("/index");
+                .logout()
+                .logoutUrl("/index")
+        		.deleteCookies("remember-me")
+        	.and()
+        		.rememberMe();
     }
 }

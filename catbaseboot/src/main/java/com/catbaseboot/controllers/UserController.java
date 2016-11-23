@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,8 +38,16 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			return "/users/new";
 		} else {
-			userService.saveUser(registerFormDto);
-			redirectAttributes.addFlashAttribute("message", "Done, user is created!");
+			try {
+				userService.saveUser(registerFormDto);
+				redirectAttributes.addFlashAttribute("message", "Done, user is created!");
+			} catch (DataIntegrityViolationException e) {
+				redirectAttributes.addFlashAttribute("errorMessage", "User already exists");
+				/*bindingResult.reject("errorMessage", "User already exists");*/
+				e.printStackTrace();
+				return "redirect:/users/new";
+			}
+			
 			return "redirect:/login";
 		}
 	}

@@ -29,7 +29,7 @@
 	        </div>
 		</form>
 		
-		<div th:if="${message} != null">
+		<div class="col-md-8 col-md-offset-2 text-center" th:if="${message} != null">
         	<span th:replace="fragments/alert :: alert (type='success', message=${message})">...</span>
         </div>
 
