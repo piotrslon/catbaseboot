@@ -46,4 +46,13 @@ public class UserService {
 	public User getUserByEmail(String email) {
 		return userRepository.findOneByEmail(email);
 	}
+	
+	public void initSuperuser () {
+		User superuser = new User();
+		superuser.setUsername("superuser");
+		superuser.setEmail("examlpe@gmail.com");
+		String encodedPassword = new BCryptPasswordEncoder().encode("password");
+		superuser.setPassword(encodedPassword);
+		userRepository.save(superuser);
+	}
 }

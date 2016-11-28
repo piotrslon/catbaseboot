@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.catbaseboot.dto.AddCatFormDto;
 import com.catbaseboot.model.Cat;
 import com.catbaseboot.services.CatService;
+import com.catbaseboot.services.UserService;
 
 
 @Controller
@@ -27,8 +28,13 @@ public class CatsController {
 	@Autowired
 	private CatService catService;
 	
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping("")
 	public String start (Model model) {
+		if (userService.getUserByUsername("superuser") == null)
+		userService.initSuperuser();
 		
 		return "index";
 	}
