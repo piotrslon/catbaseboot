@@ -9,13 +9,18 @@ import org.springframework.stereotype.Service;
 
 import com.catbaseboot.dto.AddCatFormDto;
 import com.catbaseboot.model.Cat;
+import com.catbaseboot.model.CatsToys;
 import com.catbaseboot.repositories.CatRepository;
+import com.catbaseboot.repositories.CatsToysRepository;
 
 @Service
 public class CatService {
 	
 	@Autowired
 	private CatRepository catRepository;
+	
+	@Autowired
+	private CatsToysRepository catsToysRepository;
 	
 	/*public Cart saveCart(Cart cart) {
     Cart dbCart = null;
@@ -59,7 +64,26 @@ public class CatService {
         return catRepository.findOne(id);
     }
 	
-	//to chyba powinno byc w serwisie..
+	public List<CatsToys> getAllCatsToys(){
+		return catsToysRepository.findAll();
+	}
+	
+	public List<CatsToys> findAllByCat (Cat cat) {
+		return catsToysRepository.findAllByCat(cat);
+	}
+	
+	/*public List<CatsToys> getAllCatsToysByName(String name){
+		return catsToysRepository.findAllByName(name);
+		//ByCatnane? or ByToysName?
+	}
+	
+	public Page<Article> findAllByUser(User user, Pageable page) {
+		Page<Article> articlePage = articleRepository.findByAuthor(user, page);
+		markFavouriteArticles(articlePage.getContent(), user);
+		return articlePage;
+	}*/
+	
+	//to chyba powinno byc w serwisie, albo jakim bootLoaderze..
 	public void initCats() throws ParseException{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 		
@@ -68,7 +92,16 @@ public class CatService {
 		cat1.setBirthDate(sdf.parse("12.04.2013"));
 		cat1.setWeight((float) 6.0);
 		cat1.setGuardianName("Ania");
+		CatsToys catstoys1 = new CatsToys();
+		catstoys1.setToyName("Ball");
+		catstoys1.setToyColor("Red");
+		catstoys1.setToyPrice((float)12.5);
+		/*catsToysRepository.save(catstoys1);*/
+		cat1.addCatToys(catstoys1);
 		catRepository.save(cat1);
+		/*List<CatsToys> catstoyslist = findAllByCat(cat1);
+		System.out.println("catstoyslist: "+catstoyslist);*/
+		/*cat1.setCatstoys(catstoyslist);*/
 		Cat cat2 = new Cat();
 		cat2.setName("Bonifacy");
 		cat2.setBirthDate(sdf.parse("14.01.2011"));
