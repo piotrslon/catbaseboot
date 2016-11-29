@@ -44,7 +44,6 @@ public class UserController {
 			} catch (DataIntegrityViolationException e) {
 				redirectAttributes.addFlashAttribute("errorMessage", "User already exists");
 				/*bindingResult.reject("errorMessage", "User already exists");*/
-				e.printStackTrace();
 				return "redirect:/users/new";
 			}
 			

@@ -2,6 +2,7 @@ package com.catbaseboot.services;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	private Logger logger = Logger.getLogger(UserService.class);
 	
 	/*@Transactional
     public User saveUser(User user) throws IOException {
@@ -48,6 +51,8 @@ public class UserService {
 	}
 	
 	public void initSuperuser () {
+		logger.info("Create superuser ...");
+		
 		User superuser = new User();
 		superuser.setUsername("superuser");
 		superuser.setEmail("examlpe@gmail.com");
