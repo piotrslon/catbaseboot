@@ -39,7 +39,6 @@
     		</div>
     		<button class="btn btn-lg btn-success btn-block" type="submit" value="Register">Register</button>
     	</form>
-    	<!-- <div th:if="${user.exists}" class="alert alert-danger login-denger" role="alert" th:text="#{user.exists}">Login error</div> -->
     	
     	<div class="col-md-8 col-md-offset-2 text-center" th:if="${errorMessage} != null">
         	<span th:replace="fragments/alert :: alert (type='danger', message=${errorMessage})">...</span>

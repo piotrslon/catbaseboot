@@ -13,10 +13,12 @@
 					<tr>
 						<th>#</th>
 						<th>Cats name</th>
+						<th>toys</th>
 					</tr>
 					<tr th:each="cat,loop : ${cats}">
 						<td th:text="${loop.index}"></td>
 						<td><a href="#" th:href="@{/cats/show/}+${loop.index}" th:text="${cat.name}"></a></td>
+						<td th:text="${cat.weight}"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -29,6 +31,17 @@
 					<p>Weight: <span th:text="${catWeight}"></span></p>
 					<p>Born date: <span th:text="${catBDate}"></span></p> <!-- format -->
 					<p>Guardian name: <span th:text="${catGName}"></span></p>
+					<h4><span th:text="${catName}"></span> toys:</h4>
+					<p class="add_toy"><a href="#">add toy</a></p>
+					<div class="add_toy_form hide">
+						
+						Country code: <input type="text" name="country_code" 
+						pattern="[A-Za-z]{3}" title="Three letter country code">
+						</input>
+					</div>
+					<!-- th:each tylko na tabli? 
+					.visually-hidden -->
+					
 				</div>
 			</div>
 			
