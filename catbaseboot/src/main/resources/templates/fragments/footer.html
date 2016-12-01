@@ -13,9 +13,13 @@
 		    <div th:fragment="footer">
 		        <footer class="footer">
 		            <hr/>
-		            <p>&copy; 2013 The Static Templates
+		            <div><p class="pull-left">&copy; 2013 The Static Templates</p>
 		            <!-- show if have role -->
-		            <a href="/logout"><span class="glyphicon glyphicon-off pull-right"></span></a></p>
+		            	<div class="pull-right">
+				            <a href="/"><span class="glyphicon glyphicon-tree-deciduous footer-button" title="back to index"></span></a>
+				            <a href="/logout"><span class="glyphicon glyphicon-off" title="logout"></span></a>
+		            	</div>
+		            </div>
 		        </footer>
 		    </div>
 		</div>
